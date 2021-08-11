@@ -7,6 +7,7 @@ import java.util.List;
 
 public class inMemoryContactService implements ContactService {
     List<Contact> contacts = new ArrayList<>();
+
     @Override
     public List<Contact> getAll() {
         return contacts;
@@ -22,13 +23,14 @@ public class inMemoryContactService implements ContactService {
         contacts.add(contact);
     }
 
-    public List searchContact(String search){
-        List<Contact> searches = new ArrayList<>();
-        for (Contact contact : contacts) {
-            if (contact.getName().startsWith(search)) {
-                searches.add(contact);
-            }
-        }
+    public List<Contact> searchContact(String search){
+        List<Contact> searches = ListUtils.filter(contacts,
+                contact -> contact.getName().startsWith(search));
+//        for (Contact contact : contacts) {
+//            if (contact.getName().startsWith(search)) {
+//                searches.add(contact);
+//            }
+//        }
         return searches;
     }
 }

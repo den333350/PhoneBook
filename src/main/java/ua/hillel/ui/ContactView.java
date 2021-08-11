@@ -42,7 +42,7 @@ public class ContactView {
     }
 
     public String readSearch(){
-        System.out.print("Введите начало контакта:");
+        System.out.print("Введите начало контакта: ");
         return sc.nextLine();
     }
 }
